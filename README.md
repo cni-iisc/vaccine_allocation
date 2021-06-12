@@ -9,8 +9,10 @@
 * To run the closed loop control with 66% vaccine efficacy:
   * Extract closed_loop/May01_run/AgeDistrictMatrix.zip and run closed_loop/May01_run/100000/run.py
   * Change directory to closed_loop/controls/
+  * Extract Output_0.zip and copy this to all sub-directories
   * Run reset_configs.py, run.py and merge_outputs.py in this order.
 * To run the closed loop control with 33% vaccine efficacy:
   * Extract closed_loop/May01_run_33_vaxefficacy/AgeDistrictMatrix.zip and run closed_loop/May01_run_33_vaxefficacy/100000/run.py
   * Change directory to closed_loop/controls_33_vaxefficacy/
+  * Extract Output_0.zip and copy this to all sub-directories
   * Run reset_configs.py, run.py and merge_outputs.py in this order.
