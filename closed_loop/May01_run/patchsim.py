@@ -597,7 +597,6 @@ def do_patchsim_det_force_step_betaoutside(State_Array, patch_df, params, theta,
 
 def do_patchsim_det_force_step_betaoutside_waning(State_Array, patch_df, params, theta, seeds, vaxs, t, wane_array):
     """Do step of the deterministic simulation."""
-    print(wane_array)
     S, E, I, R, V, new_inf = State_Array  ## Aliases for the State Array
 
     # seeding for day t (seeding implies S->I)

@@ -10,7 +10,7 @@ strings = ['', '_exposed.csv', '_infected.csv', '_susceptible.csv', '_recovered.
 
 
 for budget in budgets:
-    os.chdir(append_path+str(budget))
+    os.chdir(append_path+'/'+str(budget))
     for x in strings:
         output = pd.read_csv('../../May01_run/100000/May012021PopulationProportion.csv'+x, header=None, sep = ' ')
         last_day = output.shape[1] - 1
