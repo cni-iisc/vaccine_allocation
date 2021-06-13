@@ -1,5 +1,0 @@
-2021-06-12 14:20:11,684 - patchsim - INFO - Starting PatchSim
-2021-06-12 14:20:11,684 - patchsim - INFO - Operating PatchSim under Force Model
-2021-06-12 14:20:11,684 - patchsim - INFO - Loaded patch attributes
-2021-06-12 14:20:11,684 - patchsim - INFO - Parameter: alpha=1.720000e-01, beta=1.000000e-01, gamma=2.000000e-01
-2021-06-12 14:20:11,729 - patchsim - INFO - Loaded disease parameters from ParamFile
