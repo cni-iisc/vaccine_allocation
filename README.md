@@ -17,3 +17,6 @@
 ## Steps to generate plots
 * Change the directory to get_results/plots.
 * run generate_plots.sh.
+
+### Reference
+A. Adiga et al., Strategies to Mitigate COVID-19 Resurgence Assuming Immunity Waning: A Study for Karnataka, India. [medRxiv preprint](https://www.medrxiv.org/content/10.1101/2021.05.26.21257836v1)
