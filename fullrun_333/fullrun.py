@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 sys.path.append('../')
 import patchsim as sim
 
-daily_budgets = [100000, 133000, 167000, 200000, 233000, 267000, 300000, 333000, 367000, 400000] 
+daily_budgets = [100000, 133000, 167000, 200000, 233000, 267000, 300000, 333000, 367000, 400000]
 
 present_directory = os.getcwd()
 for daily_budget in daily_budgets:

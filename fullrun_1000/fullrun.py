@@ -13,7 +13,7 @@ daily_budgets = [100000, 133000, 167000, 200000, 233000, 267000, 300000, 333000,
 present_directory = os.getcwd()
 for daily_budget in daily_budgets:
     os.chdir(present_directory)
-    os.chdir('./'+str(daily_budget)) 
+    os.chdir('./'+str(daily_budget))    
 # run scenario 1
     configs = sim.read_config('AgeDistrictConfigurationPopulationProportional') # assumes no interventions files in input
     numberofdays = int(configs['Duration'])

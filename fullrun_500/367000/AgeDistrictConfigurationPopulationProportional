@@ -14,7 +14,7 @@ ScalingFactor=1
 SeedFile=../../Seed.csv
 
 StartDate=56
-Duration=328
+Duration=450
 
 LoadState=True
 LoadFile=../../InitialConditionKarnataka.npy
