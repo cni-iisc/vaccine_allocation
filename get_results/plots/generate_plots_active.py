@@ -252,6 +252,7 @@ output3_case1 = path3+'August2021PopulationProportion.csv'
 output4_case1 = path4+'August2021PopulationProportion.csv'
 output5_case1 = path5+'OutputMerged.csv'
 
-os.mkdir('active_plots')
+if not (os.path.isdir('active_plots')):
+    os.mkdir('active_plots')
 
 generate_plots_comparison(output1_case1,output2_case1,output3_case1,output4_case1, output5_case1, 204, 240, 450, 7, 'active_plots', 20)

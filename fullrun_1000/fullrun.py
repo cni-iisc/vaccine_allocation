@@ -4,6 +4,11 @@ import numpy as np
 import os
 from scipy.optimize import least_squares
 import matplotlib.pyplot as plt
+import zipfile
+
+print ('Extracting AgeDistrictMatrix.zip file...\n')
+with zipfile.ZipFile('AgeDistrictMatrix.zip', 'r') as zip_ref:
+    zip_ref.extractall('.')
 
 sys.path.append('../')
 import patchsim as sim
@@ -39,3 +44,7 @@ for daily_budget in daily_budgets:
     sim.run_disease_simulation(configs,write_epi=True)
 
     print(str(daily_budget), 'complete ...')
+
+print ('Deleting AgeDistrictMatrix.csv file...\n')
+os.remove('AgeDistrictMatrix.csv')
+

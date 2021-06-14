@@ -163,7 +163,7 @@ def get_cir_factors(duration):
 
 
 def get_population():
-    data = pd.read_csv('../AgeDistrictPopulation.csv', sep = ' ', header=None)
+    data = pd.read_csv('../../AgeDistrictPopulation.csv', sep = ' ', header=None)
     df = pd.DataFrame(columns = ['District', 'pop'])
     districts = get_districts()
     for x in districts:
@@ -278,6 +278,7 @@ output3_case1 = path3+'August2021PopulationProportion.csv'
 output4_case1 = path4+'August2021PopulationProportion.csv'
 output5_case1 = path5+'OutputMerged.csv'
 
-os.mkdir('susceptible_fraction')
+if not (os.path.isdir('susceptible_fraction')):
+    os.mkdir('susceptible_fraction')
 
 generate_plots_comparison(output1_case1,output2_case1,output3_case1,output4_case1, output5_case1, 204, 240, 450, 7, 'susceptible_fraction', 20)

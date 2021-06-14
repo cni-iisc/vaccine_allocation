@@ -4,6 +4,11 @@ import numpy as np
 import os
 from scipy.optimize import least_squares
 import matplotlib.pyplot as plt
+import zipfile
+
+print ('Extracting AgeDistrictMatrix.zip file...\n')
+with zipfile.ZipFile('AgeDistrictMatrix.zip', 'r') as zip_ref:
+    zip_ref.extractall('.')
 
 import patchsim as sim
 

@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 def get_districts():
     return pd.read_csv('../../seroprevalence_modified.csv')['Unit'].tolist()
 
-
 def get_beta_districts(beta):
     districts = get_districts()
     districts_beta = pd.DataFrame(columns = ['district', 'beta'])
@@ -48,7 +47,7 @@ def prepare_district_frame(start_index_calibration, days_calibration, start_inde
     
     district_frame = pd.DataFrame(columns=['DistrictName']+(list(range(0,days_calibration))))
     district_frame['DistrictName'] = districts
-    
+
     for x in districts:
         if x in bengaluru_zones:
             district_index = inf[inf['Unit']=='Bengaluru-Urban'].index.item()
@@ -284,6 +283,7 @@ output3_case1 = path3+'August2021PopulationProportion.csv'
 output4_case1 = path4+'August2021PopulationProportion.csv'
 output5_case1 = path5+'OutputMerged.csv'
 
-os.mkdir('infected')
+if not (os.path.isdir('infected')):
+    os.mkdir('infected')
 
 generate_plots_comparison(output1_case1,output2_case1,output3_case1,output4_case1,output5_case1, 204, 240, 450, 7, 'infected', 20)
