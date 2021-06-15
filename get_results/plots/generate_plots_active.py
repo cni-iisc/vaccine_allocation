@@ -216,7 +216,7 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
             plt.title(x+ ' -- Actuve cases') 
         plt.legend()
         plt.savefig(sub_dir+'/daily_'+x, bbox_inches='tight')    
-        plt.show()
+        # plt.show()
         plt.close()
         
         
@@ -235,7 +235,7 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
     plt.title('Karnataka -- Active cases') 
     plt.legend()
     plt.savefig(sub_dir+'/daily_Karnataka.png', bbox_inches='tight')    
-    plt.show()
+    # plt.show()
     plt.close()
     
 

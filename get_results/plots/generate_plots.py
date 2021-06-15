@@ -210,7 +210,7 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
             plt.title(x+ ' -- Daily') 
         plt.legend()
         plt.savefig(sub_dir+'/daily_'+x, bbox_inches='tight')    
-        plt.show()
+        # plt.show()
         plt.close()
         
         
@@ -232,7 +232,7 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
             plt.title(x+ ' -- Cumulative') 
         plt.legend()
         plt.savefig(sub_dir+'/cumulative_'+x, bbox_inches='tight')    
-        plt.show()
+        # plt.show()
         plt.close()
       
     plt.plot((karnataka_curve1_case1), 'b^--',label='No NPI')
@@ -251,7 +251,7 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
     plt.legend()
     plt.ylim(0,55000)
     plt.savefig(sub_dir+'/daily_Karnataka.png', bbox_inches='tight')    
-    plt.show()
+    # plt.show()
     plt.close()
     
     plt.plot(np.cumsum(karnataka_curve1_case1), 'b^--',label='No NPI')
@@ -267,7 +267,7 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
     plt.legend()
     plt.ylim(0,5000000)
     plt.savefig(sub_dir+'/cumulative_Karnataka.png', bbox_inches='tight')    
-    plt.show()
+    # plt.show()
     plt.close()
 
 

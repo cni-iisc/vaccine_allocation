@@ -241,7 +241,7 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
             plt.title(x+ ' -- Susceptible Fraction') 
         plt.legend()
         plt.savefig(sub_dir+'/daily_'+x, bbox_inches='tight')    
-        plt.show()
+        # plt.show()
         plt.close()
         
         
@@ -261,7 +261,7 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
     plt.legend()
     plt.ylim(0,1)
     plt.savefig(sub_dir+'/daily_Karnataka.png', bbox_inches='tight')    
-    plt.show()
+    # plt.show()
     plt.close()
     
 
