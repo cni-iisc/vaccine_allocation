@@ -46,5 +46,8 @@ for daily_budget in daily_budgets:
     print(str(daily_budget), 'complete ...')
 
 print ('Deleting AgeDistrictMatrix.csv file...\n')
-os.remove('AgeDistrictMatrix.csv')
+cur_dir = os.getcwd()
+cur_dir = cur_dir.split('/')[:-1]
+cur_dir = '/'.join(cur_dir)
+os.remove(F'{cur_dir}/AgeDistrictMatrix.csv')
 
