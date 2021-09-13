@@ -246,11 +246,11 @@ path3 = '../../fullrun_500/167000/'
 path4 = '../../fullrun_333/167000/'
 path5 = '../../closed_loop/controls/167000/'
 
-output1_case1 = path1+'August2021PopulationProportion.csv'
-output2_case1 = path2+'August2021PopulationProportion.csv'
-output3_case1 = path3+'August2021PopulationProportion.csv'
-output4_case1 = path4+'August2021PopulationProportion.csv'
-output5_case1 = path5+'OutputMerged.csv'
+output1_case1 = path1+'August2021PopulationProportion.csv_infected.csv'
+output2_case1 = path2+'August2021PopulationProportion.csv_infected.csv'
+output3_case1 = path3+'August2021PopulationProportion.csv_infected.csv'
+output4_case1 = path4+'August2021PopulationProportion.csv_infected.csv'
+output5_case1 = path5+'OutputMerged.csv_infected.csv'
 
 if not (os.path.isdir('active_plots')):
     os.mkdir('active_plots')
