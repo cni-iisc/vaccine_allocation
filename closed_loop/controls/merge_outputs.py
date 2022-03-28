@@ -3,7 +3,7 @@ import os
 
 budgets = [100000, 133000, 167000, 200000, 233000, 267000, 300000, 333000, 367000, 400000]
 append_path = os.getcwd()
-indices = list(range(1,20))
+indices = list(range(1,30))
 
 strings = ['', '_exposed.csv', '_infected.csv', '_susceptible.csv', '_recovered.csv', '_newexposure.csv']
 

@@ -16,7 +16,7 @@ SeedFile=../../Seed.csv
 
 
 StartDate=56
-Duration=450
+Duration=509
 
 LoadState=True
 LoadFile=../../InitialConditionKarnataka.npy

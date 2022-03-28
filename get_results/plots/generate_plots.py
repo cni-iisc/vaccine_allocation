@@ -157,11 +157,11 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
 
     districts = get_districts()
     if start_offset == 20:
-        x_indices_temp = [0, 21, 51, 82, 113, 141, 172, 202, 233, 263, 294, 325, 355, 386, 416, 446]
+        x_indices_temp = [0, 21, 51, 82, 113, 141, 172, 202, 233, 263, 294, 325, 355, 386, 416, 447, 478, 505]
         x_indices = [a-(start_offset+1) for a in x_indices_temp][1::]
-        x_labels = ['01 Nov 2020', '01 Dec 2020', '01 Jan 2021', '01 Feb 2021', '01 Mar 2021', '01 Apr 2021', '01 May 2021', '01 Jun 2021', '01 Jul 2021', '01 Aug 2021', '01 Sep 2021', '01 Oct 2021', '01 Nov 2021', '01 Dec 2021', '31 Dec 2021']
+        x_labels = ['01 Nov 2020', '01 Dec 2020', '01 Jan 2021', '01 Feb 2021', '01 Mar 2021', '01 Apr 2021', '01 May 2021', '01 Jun 2021', '01 Jul 2021', '01 Aug 2021', '01 Sep 2021', '01 Oct 2021', '01 Nov 2021', '01 Dec 2021', '01 Jan 2022', '01 Feb 2022', '28 Feb 2022']
     else:
-        x_indices = [0, 21, 51, 82, 113, 141, 172, 202, 233, 263, 294, 324]
+        x_indices = [0, 21, 51, 82, 113, 141, 172, 202, 233, 263, 294, 325, 356, 383]
         x_labels = ['11 Oct 2020', '01 Nov 2020', '01 Dec 2020', '01 Jan 2021', '01 Feb 2021', '01 Mar 2021', '01 Apr 2021', '01 May 2021', '01 Jun 2021', '01 Jul 2021', '01 Aug 2021', '31 Aug 2021']
     karnataka_curve1_case1 = np.full(plot_days_simulation, 0)[start_offset+delay::]
     karnataka_curve2_case1 = np.full(plot_days_simulation, 0)[start_offset+delay::]
@@ -191,15 +191,15 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
         karnataka_curve5_case1 =  karnataka_curve5_case1 + curve5_case1
         
         karnataka_data = karnataka_data + curve_data
-        plt.plot((curve1_case1), 'b^--',label='No NPI')
-        plt.plot((curve2_case1), 'g^--',label='1/3 NPI')
-        plt.plot((curve3_case1), 'c^--',label='1/2 NPI')
+        plt.plot((curve1_case1), 'b',label='No NPI')
+        plt.plot((curve2_case1), 'g',label='1/3 NPI')
+        plt.plot((curve3_case1), 'c',label='1/2 NPI')
 
-        plt.plot((curve4_case1), 'm^--',label='2/3 NPI')
+        plt.plot((curve4_case1), 'm',label='2/3 NPI')
         
-        plt.plot((curve5_case1), 'k^--',label='Closed Loop Control')
+        plt.plot((curve5_case1), 'k',label='Closed Loop Control')
 
-        plt.plot((curve_data), 'ro-',label='Reported cases')
+        plt.plot((curve_data), 'r',label='Reported cases')
         
         plt.xticks(x_indices, x_labels, rotation='vertical')
         plt.grid(True)
@@ -214,14 +214,14 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
         plt.close()
         
         
-        plt.plot(np.cumsum(curve1_case1), 'b^--',label='No NPI')
-        plt.plot(np.cumsum(curve2_case1), 'g^--',label='1/3 NPI')
-        plt.plot(np.cumsum(curve3_case1), 'c^--',label='1/2 NPI')
+        plt.plot(np.cumsum(curve1_case1), 'b',label='No NPI')
+        plt.plot(np.cumsum(curve2_case1), 'g',label='1/3 NPI')
+        plt.plot(np.cumsum(curve3_case1), 'c',label='1/2 NPI')
         
-        plt.plot(np.cumsum(curve4_case1), 'm^--',label='2/3 NPI')
+        plt.plot(np.cumsum(curve4_case1), 'm',label='2/3 NPI')
 
-        plt.plot(np.cumsum(curve5_case1), 'k^--',label='Closed Loop Control')
-        plt.plot(np.cumsum(curve_data), 'ro-',label='Reported cases')
+        plt.plot(np.cumsum(curve5_case1), 'k',label='Closed Loop Control')
+        plt.plot(np.cumsum(curve_data), 'r',label='Reported cases')
         
         plt.xticks(x_indices, x_labels, rotation='vertical')
         plt.grid(True)
@@ -235,15 +235,15 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
         # plt.show()
         plt.close()
       
-    plt.plot((karnataka_curve1_case1), 'b^--',label='No NPI')
-    plt.plot((karnataka_curve2_case1), 'g^--',label='1/3 NPI')
-    plt.plot((karnataka_curve3_case1), 'c^--',label='1/2 NPI')
+    plt.plot((karnataka_curve1_case1), 'b',label='No NPI')
+    plt.plot((karnataka_curve2_case1), 'g',label='1/3 NPI')
+    plt.plot((karnataka_curve3_case1), 'c',label='1/2 NPI')
     
-    plt.plot((karnataka_curve4_case1), 'm^--',label='2/3 NPI')
+    plt.plot((karnataka_curve4_case1), 'm',label='2/3 NPI')
     
-    plt.plot((karnataka_curve5_case1), 'k^--',label='Closed Loop Control')
+    plt.plot((karnataka_curve5_case1), 'k',label='Closed Loop Control')
     
-    plt.plot((karnataka_data), 'ro-',label='Reported cases')
+    plt.plot((karnataka_data), 'r',label='Reported cases')
     plt.xticks(x_indices, x_labels, rotation='vertical')
     plt.grid(True)
     plt.ylabel('Daily cases')
@@ -254,12 +254,12 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
     # plt.show()
     plt.close()
     
-    plt.plot(np.cumsum(karnataka_curve1_case1), 'b^--',label='No NPI')
-    plt.plot(np.cumsum(karnataka_curve2_case1), 'g^--',label='1/3 NPI')
-    plt.plot(np.cumsum(karnataka_curve3_case1), 'c^--',label='1/2 NPI')
-    plt.plot(np.cumsum(karnataka_curve4_case1), 'm^--',label='2/3 NPI')
-    plt.plot(np.cumsum(karnataka_curve5_case1), 'k^--',label='Closed Loop Control')
-    plt.plot(np.cumsum(karnataka_data), 'ro-',label='Reported cases')
+    plt.plot(np.cumsum(karnataka_curve1_case1), 'b',label='No NPI')
+    plt.plot(np.cumsum(karnataka_curve2_case1), 'g',label='1/3 NPI')
+    plt.plot(np.cumsum(karnataka_curve3_case1), 'c',label='1/2 NPI')
+    plt.plot(np.cumsum(karnataka_curve4_case1), 'm',label='2/3 NPI')
+    plt.plot(np.cumsum(karnataka_curve5_case1), 'k',label='Closed Loop Control')
+    plt.plot(np.cumsum(karnataka_data), 'r',label='Reported cases')
     plt.xticks(x_indices, x_labels, rotation='vertical')
     plt.grid(True)
     plt.ylabel('Cumulative cases')
@@ -286,4 +286,4 @@ output5_case1 = path5+'OutputMerged.csv'
 if not (os.path.isdir('infected')):
     os.mkdir('infected')
 
-generate_plots_comparison(output1_case1,output2_case1,output3_case1,output4_case1,output5_case1, 204, 240, 450, 7, 'infected', 20)
+generate_plots_comparison(output1_case1,output2_case1,output3_case1,output4_case1,output5_case1, 204, 509, 509, 7, 'infected', 20)

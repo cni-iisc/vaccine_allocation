@@ -129,7 +129,7 @@ def modify_config(budget, start_week_index):
 
 ref_date = date(2021,5,2)
 dates = [ref_date]
-total_weeks = 20
+total_weeks = 30
 for i in range(0,total_weeks-1):
     dates.append(ref_date+timedelta(days=(i+1)*14))
 

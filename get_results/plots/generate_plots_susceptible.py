@@ -188,9 +188,9 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
 
     districts = get_districts()
     if start_offset == 20:
-        x_indices_temp = [0, 21, 51, 82, 113, 141, 172, 202, 233, 263, 294, 325, 355, 386, 416, 446]
+        x_indices_temp = [0, 21, 51, 82, 113, 141, 172, 202, 233, 263, 294, 325, 355, 386, 416, 447, 478, 505]
         x_indices = [a-(start_offset+1) for a in x_indices_temp][1::]
-        x_labels = ['01 Nov 2020', '01 Dec 2020', '01 Jan 2021', '01 Feb 2021', '01 Mar 2021', '01 Apr 2021', '01 May 2021', '01 Jun 2021', '01 Jul 2021', '01 Aug 2021', '01 Sep 2021', '01 Oct 2021', '01 Nov 2021', '01 Dec 2021', '31 Dec 2021']
+        x_labels = ['01 Nov 2020', '01 Dec 2020', '01 Jan 2021', '01 Feb 2021', '01 Mar 2021', '01 Apr 2021', '01 May 2021', '01 Jun 2021', '01 Jul 2021', '01 Aug 2021', '01 Sep 2021', '01 Oct 2021', '01 Nov 2021', '01 Dec 2021', '01 Jan 2022', '01 Feb 2022', '28 Feb 2022']
     else:
         x_indices = [0, 21, 51, 82, 113, 141, 172, 202, 233, 263, 294, 324]
         x_labels = ['11 Oct 2020', '01 Nov 2020', '01 Dec 2020', '01 Jan 2021', '01 Feb 2021', '01 Mar 2021', '01 Apr 2021', '01 May 2021', '01 Jun 2021', '01 Jul 2021', '01 Aug 2021', '31 Aug 2021']
@@ -224,13 +224,13 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
         karnataka_curve4_case1 =  karnataka_curve4_case1 + curve4_case1
 
         karnataka_curve5_case1 =  karnataka_curve5_case1 + curve5_case1
-        plt.plot((curve1_case1/population), 'b^--',label='No NPI')
-        plt.plot((curve2_case1/population), 'g^--',label='1/3 NPI')
-        plt.plot((curve3_case1/population), 'c^--',label='1/2 NPI')
+        plt.plot((curve1_case1/population), 'b',label='No NPI')
+        plt.plot((curve2_case1/population), 'g',label='1/3 NPI')
+        plt.plot((curve3_case1/population), 'c',label='1/2 NPI')
 
-        plt.plot((curve4_case1/population), 'm^--',label='2/3 NPI')
+        plt.plot((curve4_case1/population), 'm',label='2/3 NPI')
         
-        plt.plot((curve5_case1/population), 'k^--',label='Closed Loop Control')
+        plt.plot((curve5_case1/population), 'k',label='Closed Loop Control')
         
         plt.xticks(x_indices, x_labels, rotation='vertical')
         plt.grid(True)
@@ -246,13 +246,13 @@ def generate_plots_comparison(outputfile1_case1,outputfile2_case1,outputfile3_ca
         
         
     population = np.sum(population_df['pop'].values.tolist())
-    plt.plot((karnataka_curve1_case1/population), 'b^--',label='No NPI')
-    plt.plot((karnataka_curve2_case1/population), 'g^--',label='1/3 NPI')
-    plt.plot((karnataka_curve3_case1/population), 'c^--',label='1/2 NPI')
+    plt.plot((karnataka_curve1_case1/population), 'b',label='No NPI')
+    plt.plot((karnataka_curve2_case1/population), 'g',label='1/3 NPI')
+    plt.plot((karnataka_curve3_case1/population), 'c',label='1/2 NPI')
     
-    plt.plot((karnataka_curve4_case1/population), 'm^--',label='2/3 NPI')
+    plt.plot((karnataka_curve4_case1/population), 'm',label='2/3 NPI')
     
-    plt.plot((karnataka_curve5_case1/population), 'k^--',label='Closed Loop Control')
+    plt.plot((karnataka_curve5_case1/population), 'k',label='Closed Loop Control')
     
     plt.xticks(x_indices, x_labels, rotation='vertical')
     plt.grid(True)
@@ -281,4 +281,4 @@ output5_case1 = path5+'OutputMerged.csv_susceptible.csv'
 if not (os.path.isdir('susceptible_fraction')):
     os.mkdir('susceptible_fraction')
 
-generate_plots_comparison(output1_case1,output2_case1,output3_case1,output4_case1, output5_case1, 204, 240, 450, 7, 'susceptible_fraction', 20)
+generate_plots_comparison(output1_case1,output2_case1,output3_case1,output4_case1, output5_case1, 204, 509, 509, 7, 'susceptible_fraction', 20)
