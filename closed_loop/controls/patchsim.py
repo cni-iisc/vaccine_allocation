@@ -595,7 +595,7 @@ def do_patchsim_det_force_step_betaoutside(State_Array, patch_df, params, theta,
     R[t + 1] = params["gamma"] * I[t] + (1 - params["delta"]) * R[t]
     V[t + 1] = V[t]
 
-def do_patchsim_det_force_step_betaoutside_waning(State_Array, patch_df, params, theta, seeds, vaxs, t, wane_array):
+def do_patchsim_det_force_step_betaoutside_waning(State_Array, patch_df, params, theta, seeds, vaxs, t, wane_array_recoveries, wane_array_vaccinations):
     """Do step of the deterministic simulation."""
     S, E, I, R, V, new_inf = State_Array  ## Aliases for the State Array
 
@@ -636,27 +636,34 @@ def do_patchsim_det_force_step_betaoutside_waning(State_Array, patch_df, params,
 
     
     #decrement the coutner by 1
-    for i in range(0,len(wane_array)):
-    	wane_array[i] = wane_array[i] - 1
-    	#for x in range(0,len(wane_array[i])):
-        #    wane_array[i][x] = wane_array[i][x] - 1
-    
+    for i in range(0,len(wane_array_recoveries)):
+    	wane_array_recoveries[i] = wane_array_recoveries[i] - 1
+    	#for x in range(0,len(wane_array_recoveries[i])):
+        #    wane_array_recoveries[i][x] = wane_array_recoveries[i][x] - 1
+   
+    for i in range(0,len(wane_array_vaccinations)):
+    	wane_array_vaccinations[i] = wane_array_vaccinations[i] - 1
     # put a counter for each new recovey    
     
     #print(t)
     new_recoveries =  params["gamma"] * I[t] - params["delta"] * R[t]
+    new_vaccinations = actual_vax
     #print(new_recoveries)
     for i in range(0,len(new_recoveries)):
-    	wane_array[i] = np.concatenate((wane_array[i], (120*np.random.weibull(3.67,int(np.maximum(new_recoveries[i],0)))).astype(int)))
+    	wane_array_recoveries[i] = np.concatenate((wane_array_recoveries[i], (120*np.random.weibull(3.67,int(np.maximum(new_recoveries[i],0)))).astype(int)))
     	#for x in range(0,int(new_recoveries[i])):
-    	#    wane_array[i].append(int(178*np.random.weibull(3.67)))
+    	#    wane_array_recoveries[i].append(int(178*np.random.weibull(3.67)))
     
+    for i in range(0,len(new_vaccinations)):
+        wane_array_vaccinations[i] = np.concatenate((wane_array_vaccinations[i], (120*np.random.weibull(3.67,int(np.maximum(new_vaccinations[i],0)))).astype(int)))
+
     # move people to susceptible
     move_people = np.zeros(len(patch_df)).astype(int)
-    #print('Wane array:', wane_array[0])
+    move_people_vaccinations = np.zeros(len(patch_df)).astype(int)
+    #print('Wane array:', wane_array_recoveries[0])
     for i in range(0,len(new_recoveries)):
-        move_people[i] = np.count_nonzero(wane_array[i]==0)
-        wane_array[i] = wane_array[i][wane_array[i]!=0]
+        move_people[i] = np.count_nonzero(wane_array_recoveries[i]==0)
+        wane_array_recoveries[i] = wane_array_recoveries[i][wane_array_recoveries[i]!=0]
     #print('total number moved from R to S:', np.sum(move_people))
     #print('number moved from R to S:', (move_people))
     
@@ -664,7 +671,14 @@ def do_patchsim_det_force_step_betaoutside_waning(State_Array, patch_df, params,
     R[t+1] = R[t+1] - (move_people)
 
 
-def patchsim_step(State_Array, patch_df, configs, params, theta, seeds, vaxs, t, stoch, wane_array):
+    for i in range(0,len(new_vaccinations)):
+        move_people_vaccinations[i] = np.count_nonzero(wane_array_vaccinations[i]==0)
+        wane_array_vaccinations[i] = wane_array_vaccinations[i][wane_array_vaccinations[i]!=0]
+
+    S[t+1] = S[t+1] + (move_people_vaccinations)
+    V[t+1] = V[t+1] - (move_people_vaccinations)
+
+def patchsim_step(State_Array, patch_df, configs, params, theta, seeds, vaxs, t, stoch, wane_array_recoveries, wane_array_vaccinations):
     """Do step of the simulation."""
     if stoch:
         if configs["Model"] == "Mobility":
@@ -682,7 +696,7 @@ def patchsim_step(State_Array, patch_df, configs, params, theta, seeds, vaxs, t,
             )
         elif configs["Model"] == "Force":
             return do_patchsim_det_force_step_betaoutside_waning(
-                State_Array, patch_df, params, theta, seeds, vaxs, t, wane_array
+                State_Array, patch_df, params, theta, seeds, vaxs, t, wane_array_recoveries, wane_array_vaccinations
             )
         else:
             raise ValueError(
@@ -897,7 +911,8 @@ def run_disease_simulation(
 
     elif configs["NetworkType"] == "Weekly":
         ref_date = datetime.strptime("Jan 1 2017", "%b %d %Y")  # is a Sunday
-        wane_array=np.load(configs["LoadFile"]+'_wanearray.npy', allow_pickle=True)  
+        wane_array_recoveries=np.load(configs["LoadFile"]+'_wanearray_recoveries.npy', allow_pickle=True) 
+        wane_array_vaccinations=np.load(configs["LoadFile"]+'_wanearray_vaccinations.npy', allow_pickle=True)  
         for t in range(params["T"]):
             #print('day:', t)
             curr_date = ref_date + timedelta(days=t + int(configs["StartDate"]))
@@ -913,7 +928,8 @@ def run_disease_simulation(
                 vaxs,
                 t,
                 stoch,
-                wane_array
+                wane_array_recoveries,
+                wane_array_vaccinations
             )
 
             if intervene_step is not None:
@@ -945,7 +961,8 @@ def run_disease_simulation(
     if configs["SaveState"] == "True":
         logger.info("Saving StateArray to File")
         np.save(configs["SaveFile"], State_Array[:, -1, :])
-        np.save(configs["SaveFile"]+'_wanearray.npy', wane_array, allow_pickle=True)
+        np.save(configs["SaveFile"]+'_wanearray_recoveries.npy', wane_array_recoveries, allow_pickle=True)
+        np.save(configs["SaveFile"]+'_wanearray_vaccinations.npy', wane_array_vaccinations, allow_pickle=True)
     elapsed = time.time() - start
     logger.info("Simulation complete. Time elapsed: %s seconds.", elapsed)
 
